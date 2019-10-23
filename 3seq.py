@@ -11,13 +11,13 @@ for num in range(2):
     print(f'Введите элементы {num + 1}-го списка:')
     no_more_elems = False
     while not no_more_elems:
-        correct = 0
-        while correct == 0:
+        correct = False
+        while not correct:
             input_string = input('>>')
             if input_string.lower() != 'no':
                 if input_string.isdigit():
                     temp_list = list(input_string)
-                    correct = 1
+                    correct = True
                 else:
                     splitter_mask = int(',' in input_string) + (int(';' in input_string) << 1) + (
                                 int('/' in input_string) << 2)
@@ -37,19 +37,19 @@ for num in range(2):
                         print('Некорретный ввод! Использовано несколько разделителей.')
                     if splitter_sign != '':
                         temp_list = input_string.split(splitter_sign)
-                        correct = 1
+                        correct = True
                         for elem in temp_list:
                             if not elem.isdigit():
-                                correct = 0
-                        if correct == 0:
+                                correct = False
+                        if not correct:
                             print('Некорретный ввод! В строке найдены недопустимые символы.')
-                if correct == 1:
+                if correct:
                     sets[num].update(set(temp_list))
                     temp_list = []
                 print('Будут еще элементы? Введите их или наберите NO.')
             else:
                 no_more_elems = True
-                correct = 1
+                correct = True
 set_1_diff = sets[0] - sets[1]
 list_diff = list(set_1_diff)
 list_diff.sort()
