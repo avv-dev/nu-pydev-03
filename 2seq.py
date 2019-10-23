@@ -23,16 +23,16 @@ while correct == 0:
     else:
         print('Некорретный ввод! Использовано несколько разделителей.')
     if splitter_sign != '':
-        list = input_string.split(splitter_sign)
+        list_of_digits = input_string.split(splitter_sign)
         correct = 1
-        for elem in list:
+        for elem in list_of_digits:
             if not elem.isdigit():
                 correct = 0
         if correct == 0:
             print('Некорретный ввод! В строке найдены недопустимые символы.')
 list_unique = []
-for elem in list:
-    if list.count(elem) == 1:
+for elem in list_of_digits:
+    if list_of_digits.count(elem) == 1:
         list_unique.append(elem)
 if len(list_unique) > 0:
     list_unique.sort()
